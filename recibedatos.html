@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			function getUrlVars() {
+				  var vars = {};
+				  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, 
+				  function(m,key,value) {
+					vars[key] = value;
+				  });
+				  return vars;
+				}
+		
+				var nombre = getUrlVars()["fname"];
+				var apellido= getUrlVars()["lname"];
+				var colorp = getUrlVars()["lcolor"];
+				var tallap= getUrlVars()["ltalla"];
+				var op1 = decodeURIComponent(getUrlVars()["empaque1"]);
+				var op2 = decodeURIComponent(getUrlVars()["empaque2"]);
+				var op3 = decodeURIComponent(getUrlVars()["empaque3"]);
+				var ops=0;
+
+				var ad1=getUrlVars()["empaque"];
+				if(ad1!=undefined) ops+=4;
+				var ad2=getUrlVars()["nota"];
+				if(ad2!=undefined) ops+=2;
+				var ad3=getUrlVars()["prueba"];
+				if(ad3!=undefined) ops++;
+				//alert("chk= " +ops+": "+ ad1+ " - " +ad2 + " - "+ad3);
+				//alert("fname= " + nombre);
+
+				if(op1 == undefined){
+					op1='NO seleccinaste, Empaque de carton reciclado'
+				}
+				if(op2 == undefined){
+					op1='NO seleccionaste, Moño de papel'
+				}
+				if(op3 == undefined){
+					op1='NO seleccionaste, Confeti'
+				}
+
+				if(colorp == undefined){
+					colorp='No seleccionaste algún color'
+				}
+
+				if (tallap == undefined){
+					tallap='No seleccinaste la talla'
+				}
+
+		</script>         
+	</head>
+<body>
+
+<h2>Pedido Recibido</h2>
+
+<p>Recibe datos</p>
+
+<h3> Cliente</h3>
+<p id="Nombre">    </p>
+
+<h4>Pedido</h4>
+<p id="detalle">   </p>
+<p id="opcionales"> </p>
+
+<script>
+	document.getElementById("Nombre").innerHTML=nombre+" "+apellido;
+	//agregar las intrucciones para que muestre la informacion del pedido
+	document.getElementById("opcionales").innerHTML='Agregaste: <br>' + op1 + ", <br>" + op2 + ", <br>" + op3;
+	document.getElementById('detalle').innerHTML='Color:'+colorp+' ' +'<br><br>Talla:'+tallap;
+</script>
+
+
+</body>
+</html>
